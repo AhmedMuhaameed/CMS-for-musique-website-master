@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Signup</title>
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  
+  
+</head>
+
+<body>
+  <div class="main">
+    <!-- Sign up form -->
+    <section class="signup">
+      <div class="container">
+        <div class="signup-content">
+          <div class="signup-form">
+            <h2 class="form-title">Sign up</h2>
+            <form action="signup.php" method="POST" class="register-form" id="register-form" name="myForm">
+
+              <div class="form-group">
+                <label for="lname" name="lname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input type="text" name="name" id="name" placeholder="Your Name" />
+              </div>
+
+              <div class="form-group">
+                <label for="lemail"><i class="zmdi zmdi-email"></i></label>
+                <input type="email" name="email" id="email" placeholder="Your Email" />
+              </div>
+
+              <div class="form-group">
+                <label for="lpass"><i class="zmdi zmdi-lock"></i></label>
+                <input type="password" name="pass" id="pass" placeholder="Password" />
+              </div>
+
+              <div class="form-group">
+                <label for="lre-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+              </div>
+
+              <div class="form-group form-button">
+                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+              </div>
+            </form>
+          </div>
+
+          <div class="signup-image">
+            <figure><img src="images/signup.jpg" alt="sing up image"></figure>
+            <a href="Login.html" class="signup-image-link">I am already member</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- JS -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+  <script> 
+    var signupForm = document.querySelector('#register-form');
+    signupForm.addEventListener('submit', validateForm);
+	function validateForm(event){
+		event.preventDefault();	
+		console.log(event);
+		var name = document.forms["myForm"]["name"];               
+		var email = document.forms["myForm"]["email"];    
+		var password = document.forms["myForm"]["pass"];  
+		var repassword =  document.forms["myForm"]["re_pass"];  
+	  
+	   
+		if (name.value == "")                                  
+		{ 
+			window.alert("Please enter your name."); 
+			name.focus(); 
+			return false; 
+		} 
+	   
+		if (email.value == "")                                   
+		{ 
+			window.alert("Please enter a valid e-mail address."); 
+			email.focus(); 
+			return false; 
+		} 
+	   
+		if (email.value.indexOf("@", 0) < 0)                 
+		{ 
+			window.alert("Please enter a valid e-mail address."); 
+			email.focus(); 
+			return false; 
+		} 
+	   
+		if (email.value.indexOf(".", 0) < 0)                 
+		{ 
+			window.alert("Please enter a valid e-mail address."); 
+			email.focus(); 
+			return false; 
+		} 
+	   
+	   
+		if (password.value == "")                        
+		{ 
+			window.alert("Please enter your password"); 
+			password.focus(); 
+			return false; 
+		} 
+		
+		if (repassword.value == "")                        
+		{ 
+			window.alert("Please enter your re-password"); 
+			password.focus(); 
+			return false; 
+		} 
+		if (password.value!=repassword.value)                  
+		{ 
+			alert("Password and repassword don't match"); 
+			repassword.focus(); 
+			return false; 
+		} 
+		signupForm.submit();
+}</script> 
+ 
+
+
+</body>
+
+</html>

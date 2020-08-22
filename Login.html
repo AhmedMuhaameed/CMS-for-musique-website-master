@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Log In</title>
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="main">
+    <!-- Sing in  Form -->
+    <section class="sign-in">
+      <div class="container">
+        <div class="signin-content">
+          <div class="signin-image">
+            <figure><img src="images/signin.jpg" alt="sing up image"></figure>
+            <a href="signup.html" class="signup-image-link">Create an account</a>
+          </div>
+
+          <div class="signin-form">
+            <h2 class="form-title">Log In</h2>
+            <form action="Login.php" method="POST" class="register-form" id="login-form" name="myForm">
+              <div class="form-group">
+                <label for="your_name"><i class="zmdi zmdi-email"></i></label>
+                <input type="text" name="email" id="email" placeholder="Your Email" />
+              </div>
+              <div class="form-group">
+                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
+              </div>
+              <div class="form-group form-button">
+                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JS -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    var signinForm = document.querySelector('#login-form');
+    signinForm.addEventListener('submit', validateForm);
+
+    function validateForm(event) {
+      event.preventDefault();
+      console.log(event);
+      var email = document.forms["myForm"]["email"];
+      var password = document.forms["myForm"]["your_pass"];
+
+      if (email.value == "") {
+        window.alert("email must be filled out");
+        email.focus();
+        return false;
+      }
+
+      if (email.value.indexOf("@", 0) < 0) {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+      }
+
+      if (password.value == "") {
+        window.alert("password must be filled out");
+        password.focus();
+        return false;
+      }
+      signinForm.submit();
+    }
+  </script>
+</body>
+
+</html>
